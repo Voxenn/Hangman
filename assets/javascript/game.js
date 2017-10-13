@@ -1,14 +1,13 @@
-function main() {
-  let wordBank = ['oppa', 'gangnam', 'kpop', 'psy', 'dancing'];
-  let random = Math.floor((Math.random() * 4) + 1);
-  let currentWord = wordBank[random];
-  let wordLength = '';
-  let guessLeft = 7;
-  let guessTaken = 0;
+var wordBank = ['oppa', 'gangnam', 'kpop', 'psy', 'dancing'];
+var currentWord = wordBank[Math.floor((Math.random() * wordBank.length))];
+var wordLength = ' ';
+var guessLeft = 7;
+var guessTaken = 0;
 
+function main() {
   $('#guessNumLeft').text(guessLeft);
   $('#guessNumTake').text(guessTaken);
-  for (let i = 0; i < currentWord.length ; i++){
+  for (let i = 0; i < currentWord.length ; i++) {
       wordLength = wordLength.concat('- ');
   }
   $('#wordContainer').text(wordLength);
@@ -17,8 +16,16 @@ function main() {
     guessLeft--;
     $('#guessNumLeft').text(guessLeft);
     $('#guessNumTake').text(guessTaken);
-    let guess = $('#guess').val();
-  })
+    let input = $('#guess').val();
+    let guess = currentWord.search(input);
+    if(guess === -1 && guessLeft != 0) {
+      $(".guess-button").text("Try again!");
+    } else if (guess === -1 && guessLeft === 0) {
+      $(".guess-button").text("Game...over.");
+    } else {
+      $(".guess-button").text("Keep going!");
+    }
+  });
 }
 
 $(document).ready(main);
