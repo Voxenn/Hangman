@@ -28,4 +28,12 @@ function main() {
   });
 }
 
+function play() {
+
+}
+
+function updateWord() {
+  
+}
+
 $(document).ready(main);
