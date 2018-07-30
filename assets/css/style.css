@@ -1,5 +1,9 @@
+html {
+  font-family: 'Merienda', cursive;
+}
+
 body {
-  background-color: #0C73B8;
+  background-color: #ffffff;
 }
 
 p {
@@ -16,13 +20,6 @@ p {
   color: black;
 }
 
-.guess-left {
-  background-color: #E55126;
-}
-
-.guess-taken {
-  background-color: #E5A227;
-}
 
 /*.guess-taken,
 .guess-left, {
@@ -34,7 +31,6 @@ p {
 
 
 #title {
-    color: whitesmoke;
     margin: auto;
     width: 10em;
 }
@@ -45,7 +41,6 @@ p {
     padding: 10px;
 }
 #wordContainer {
-  background-color: #4f1d91;
   height: 50%;
   margin: 5%;
   text-align: center;
