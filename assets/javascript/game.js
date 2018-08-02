@@ -1,60 +1,40 @@
-var wordBank = ['spike', 'faye', 'edward'];
+var wordBank = ['spike', 'faye', 'ed', 'swordfish'];
 var currentWord = wordBank[Math.floor((Math.random() * wordBank.length))];
-var wordLength = ' ';
-var guessLeft = 7;
+var wordLength = '';
+var guessLeft = 5;
 var guessTaken = 0;
 
 function main() {
   $('#guessNumLeft').text(guessLeft);
   $('#guessNumTake').text(guessTaken);
   for (let i = 0; i < currentWord.length ; i++) {
-      wordLength = wordLength.concat('- ');
+      wordLength = wordLength.concat('-');
   }
   $('#wordContainer').text(wordLength);
   $(document).on("keypress", function(e) {
     let input = String.fromCharCode(e.which);
-    $('#guessNumLeft').text(guessLeft);
-    $('#guessNumTake').text(guessTaken);
-    //let input = $('#guess').val();
-
-    let guess = currentWord.search(input);
-    if(guess === -1 && guessLeft != 0) {
-      $(".guess-button").text("Try again!");
+    let guess = searchString(input);
+    let guessPos = wordLength.charAt(guess);
+    if((typeof guess === "undefined") && guessLeft != 0) {
       guessTaken++;
       guessLeft--;
-    } else if (guess === -1 && guessLeft === 0) {
-      $(".guess-button").text("Game...over.");
-    } else {
-      wordLength = wordLength.replace(/-/g, input);
-      $(".guess-button").text("Keep going!");
-    }
-    //alert(input);
-  });
-
-  $('.guess-button').on('click', function(){
-    guessTaken++;
-    guessLeft--;
-    $('#guessNumLeft').text(guessLeft);
-    $('#guessNumTake').text(guessTaken);
-    //let input = $('#guess').val();
-
-    let guess = currentWord.search(input);
-    if(guess === -1 && guessLeft != 0) {
       $(".guess-button").text("Try again!");
+      $('#guessNumLeft').text(guessLeft);
+      $('#guessNumTake').text(guessTaken);
     } else if (guess === -1 && guessLeft === 0) {
       $(".guess-button").text("Game...over.");
     } else {
+      wordLength = wordLength.substring(0, guess) + input + wordLength.substring(guess + 1);
+      $('#wordContainer').text(wordLength);
       $(".guess-button").text("Keep going!");
     }
   });
 }
-
-function play() {
-
+function searchString(input) {
+  for (var i = 0; i < currentWord.length; i++) {
+      if(currentWord.charAt(i) === input) {
+          return i;
+      }
+  }
 }
-
-function updateWord() {
-
-}
-
 $(document).ready(main);
