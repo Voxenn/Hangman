@@ -1,5 +1,6 @@
-var wordBank = ['spike', 'faye', 'ed', 'swordfish'];
+var wordBank = ['spike', 'faye', 'edward', 'swordfish'];
 var currentWord = wordBank[Math.floor((Math.random() * wordBank.length))];
+var hint = 'assets/images/' + currentWord + '.jpg';
 var wordLength = '';
 var guessLeft = 5;
 var guessTaken = '';
@@ -9,6 +10,7 @@ var inputArr = [];
 function main() {
   $('#guessNumLeft').text(guessLeft);
   $('#guessNumTake').text(guessTaken);
+  $('img').attr("src", hint);
   for (let i = 0; i < currentWord.length ; i++) {
       wordLength = wordLength.concat('-');
   }
@@ -17,7 +19,7 @@ function main() {
     //Get the keystroke the user entered
     let input = String.fromCharCode(e.which);
     //Search for character setting an array of where the character was found in the word
-    var guess = searchString(input);
+    let guess = searchString(input);
     //Depending on the answer, we'll either loop through to fill in all spots, set the single char, or set guess to undefined
     if (found > 1) {
       for (var i = 0; i < found ; i++) {
@@ -26,7 +28,7 @@ function main() {
     } else if ( found === 1) {
           guessChar(input, inputArr[0]);
     } else {
-       guess = null;
+          guessChar(input, null);
     }
   });
 }
@@ -41,19 +43,22 @@ function searchString(input) {
           inputArr.push(i);
       }
   }
+  return inputArr;
 }
 
 //Function to guess the user's input
 function guessChar(userGuess, guess) {
   this.guess = guess;
   this.input = userGuess;
-  if((typeof this.guess === null) && guessLeft != 0) {
+  if((this.guess === null) && guessLeft != 1) {
     guessTaken++;
     guessLeft--;
     $(".guess-button").text("Try again!");
     $('#guessNumLeft').text(guessLeft);
     $('#guessNumTake').append(this.input);
-  } else if (this.guess === null && guessLeft === 0) {
+  } else if (this.guess === null && guessLeft === 1) {
+    guessLeft--;
+    $('#guessNumLeft').text(guessLeft);
     $(".guess-button").text("Game...over.");
   } else {
     wordLength = wordLength.substring(0, this.guess) + this.input + wordLength.substring(this.guess + 1);

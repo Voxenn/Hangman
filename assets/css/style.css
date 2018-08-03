@@ -1,6 +1,6 @@
 
 body {
-  background-color: #ffffff;
+  background-color: whitesmoke;
   font-family: 'Merienda', cursive;
 }
 
@@ -19,14 +19,10 @@ p {
 }
 
 
-/*.guess-taken,
-.guess-left, {
-  margin: auto;
-  padding: 1em 3em 2em 2em;
-  color: whitesmoke;
-}*/
 
-
+img {
+  width: inherit;
+}
 
 #title {
     margin: auto;
