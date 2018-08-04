@@ -65,5 +65,8 @@ function guessChar(userGuess, guess) {
     $('#wordContainer').text(wordLength);
     $(".guess-button").text("Keep going!");
   }
+  if (currentWord === wordLength) {
+    $(".guess-button").text("You win!");
+  }
 }
 $(document).ready(main);

@@ -21,7 +21,8 @@ p {
 
 
 img {
-  width: inherit;
+  max-width: 100%;
+  height: auto;
 }
 
 #title {
@@ -43,4 +44,9 @@ img {
 #guessContainer {
   margin: 5%;
   width: 70%;
+}
+
+#hintContainer {
+  max-width: 500px;
+  max-height: 500px;
 }

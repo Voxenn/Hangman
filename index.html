@@ -8,23 +8,30 @@
 </head>
 <body>
 
-  <h1 id="title">Space Cowboy Hangman</h1>
+  <h1 id="title" class="container-fluid">Space Cowboy Hangman</h1>
   <div id="contentContainer">
-    <h1 id="wordContainer">
+    <div class="row>">
+    <h1 id="wordContainer" class="container-fluid col align-self-center">
     </h1>
+  </div>
     <div id="guessContainer">
       <div class="row">
-        <div id ="hintContainer" class="col">
-          <img src="">
+        <div id ="hintContainer" class="col container-fluid align-self-center">
+          <img src="" class="img-fuild">
         </div>
-        <div class="guess-left col">
-          <h1>Guesses Left: <span id="guessNumLeft"></span>
-          </h1>
+      </div>
+        <div class="row">
+          <div class="guess-left col align-self-end">
+            <h1>Guesses Left: <span id="guessNumLeft"></span>
+            </h1>
+          </div>
         </div>
-        <div class="guess-taken col">
+      <div class="row">
+        <div class="guess-taken container-fluid align-self-center">
           <h1>Guesses Taken: <span id="guessNumTake"></span>
           </h1>
         </div>
+      </div>
       </div>
     </div>
   </div>
