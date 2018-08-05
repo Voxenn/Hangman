@@ -29,6 +29,11 @@ img {
     margin: auto;
     width: 10em;
 }
+
+#title2 {
+    margin: auto;
+    font-size: 1em;
+}
 #contentContainer {
     width: 100%;
     height: auto;
@@ -46,7 +51,26 @@ img {
   width: 70%;
 }
 
-#hintContainer {
-  max-width: 500px;
-  max-height: 500px;
+@media (max-width: 768px) {
+
+  #hintContainer {
+    max-width: 300px;
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  #hintContainer {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  #hintContainer {
+    max-width: 400px;
+    max-height: 400px;
+  }
 }
