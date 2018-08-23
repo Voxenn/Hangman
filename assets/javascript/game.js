@@ -54,6 +54,7 @@ function guessChar(userGuess, guess) {
   }
   if (currentWord === wordLength) {
     $(".guess-button").text("You win!");
+    setTimeout(resetGame, 3000);
   }
 }
 
